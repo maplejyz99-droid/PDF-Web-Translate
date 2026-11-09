@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PDF 划词翻译 · 设置</title>
+    <link rel="icon" href="icon.png">
+    <link rel="stylesheet" href="ui.css">
+    <script type="module" src="settings.js"></script>
+  </head>
+  <body class="settings-page">
+    <main class="settings-content">
+      <header class="settings-heading">
+        <img src="icon.png" width="44" height="44" alt="">
+        <div>
+          <h1>PDF 划词翻译</h1>
+          <p>选中文字，在原文旁读中文译文。</p>
+        </div>
+      </header>
+
+      <form class="settings-card" id="api-settings">
+        <label for="api-key">DeepSeek API Key</label>
+        <p id="api-help">密钥保存在本机的扩展设置中。点击翻译时，选区文本会发送到 DeepSeek。</p>
+        <input id="api-key" name="api-key" type="password" spellcheck="false"
+          autocomplete="off" autocapitalize="none" aria-describedby="api-help" disabled>
+        <div class="settings-actions">
+          <button type="submit" class="pdfsel-primary" id="save-key" disabled>保存密钥</button>
+          <button type="button" class="pdfsel-secondary" id="clear-key" disabled>清除</button>
+        </div>
+        <p class="settings-status" id="key-status" role="status"></p>
+      </form>
+
+      <section class="settings-card" id="handler-settings" hidden>
+        <label class="settings-check" for="handle-pdfs">
+          <input type="checkbox" id="handle-pdfs" disabled>
+          打开 PDF 时使用扩展阅读器
+        </label>
+        <p>设置在下次打开 PDF 时生效。你也可以在阅读器菜单里切回浏览器内置阅读器。</p>
+        <p class="settings-status" id="handler-status" role="status"></p>
+      </section>
+
+      <p class="settings-footer">
+        划选 PDF 正文后点「翻译」，或按 <kbd>Alt</kbd> + <kbd>T</kbd>。
+        <a href="vendor/pdfjs/web/viewer.html">打开本地 PDF</a>
+      </p>
+    </main>
+  </body>
+</html>

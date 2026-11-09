@@ -1,0 +1,256 @@
+#viewer {
+  --editorHighlight-editing-cursor: text;
+  --editorFreeHighlight-editing-cursor: crosshair;
+  --editorInk-editing-cursor: crosshair;
+}
+
+:where(.pdfsel-ui, .settings-page) {
+  color-scheme: light dark;
+  --pdfsel-surface: light-dark(#ffffff, #1e2624);
+  --pdfsel-background: light-dark(#f4f7f5, #141a18);
+  --pdfsel-ink: light-dark(#192522, #f0f7f3);
+  --pdfsel-muted: light-dark(#51635d, #b4c6bf);
+  --pdfsel-line: light-dark(#cddad4, #4a5d55);
+  --pdfsel-accent: light-dark(#145e45, #a8e1c3);
+  --pdfsel-on-accent: light-dark(#ffffff, #12251c);
+  --pdfsel-hover: light-dark(#e8f3ed, #293a33);
+  color: var(--pdfsel-ink);
+  font: 400 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  text-align: start;
+}
+
+:where(.pdfsel-ui, .settings-page) :is(button, input) {
+  font: inherit;
+}
+
+.pdfsel-trigger:focus-visible,
+:where(.pdfsel-ui, .settings-page) :is(button, input, a):focus-visible {
+  outline: 2px solid var(--pdfsel-accent);
+  outline-offset: 3px;
+}
+
+.pdfsel-primary,
+.pdfsel-secondary {
+  min-height: 44px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 7px 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pdfsel-primary {
+  background: var(--pdfsel-accent);
+  color: var(--pdfsel-on-accent);
+}
+
+.pdfsel-primary:hover {
+  filter: brightness(0.92);
+}
+
+.pdfsel-secondary {
+  background: transparent;
+  color: var(--pdfsel-accent);
+}
+
+.pdfsel-secondary:hover {
+  background: var(--pdfsel-hover);
+}
+
+:where(.pdfsel-ui, .settings-page) button:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.pdfsel-float {
+  position: fixed;
+  z-index: 100;
+  box-sizing: border-box;
+  max-width: calc(100vw - 16px);
+  box-shadow: 0 4px 20px rgb(0 0 0 / 24%);
+}
+
+.pdfsel-float[hidden] {
+  display: none;
+}
+
+.pdfsel-trigger {
+  min-width: 68px;
+}
+
+.pdfsel-panel {
+  display: flex;
+  flex-direction: column;
+  width: 22rem;
+  max-height: min(23rem, calc(100dvh - 56px));
+  background: var(--pdfsel-surface);
+  border: 1px solid var(--pdfsel-line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.pdfsel-panel header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 6px 4px 14px;
+  border-bottom: 1px solid var(--pdfsel-line);
+}
+
+.pdfsel-panel h2 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.pdfsel-panel button:focus-visible {
+  outline-offset: -3px;
+}
+
+.pdfsel-close {
+  min-width: 44px;
+  padding: 6px;
+}
+
+.pdfsel-result {
+  overflow: auto;
+  min-height: 2.5em;
+  margin: 0;
+  padding: 12px 14px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  user-select: text;
+}
+
+.pdfsel-empty {
+  left: 50%;
+  top: 46%;
+  transform: translate(-50%, -50%);
+  width: max-content;
+  max-width: min(22rem, calc(100vw - 16px));
+  padding: 15px;
+  background: var(--pdfsel-surface);
+  border: 1px solid var(--pdfsel-line);
+  border-radius: 12px;
+}
+
+.pdfsel-empty p {
+  margin: 0 0 12px;
+}
+
+.pdfsel-menu-button {
+  display: block;
+  min-height: 44px;
+  width: 100%;
+  border: 0;
+  padding: 8px 12px;
+  background: var(--pdfsel-surface);
+  color: var(--pdfsel-ink);
+  text-align: start;
+  cursor: pointer;
+}
+
+.pdfsel-menu-button[hidden] {
+  display: none;
+}
+
+.pdfsel-menu-button:hover {
+  background: var(--pdfsel-hover);
+}
+
+.settings-page {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--pdfsel-background);
+}
+
+.settings-content {
+  box-sizing: border-box;
+  width: min(100%, 560px);
+  margin: auto;
+  padding: clamp(20px, 7vw, 56px) 20px;
+}
+
+.settings-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.settings-heading h1 {
+  margin: 0;
+  font-size: 23px;
+  letter-spacing: -0.02em;
+}
+
+.settings-heading p,
+.settings-card p,
+.settings-footer {
+  margin: 5px 0 0;
+  color: var(--pdfsel-muted);
+}
+
+.settings-card {
+  box-sizing: border-box;
+  margin: 0 0 12px;
+  padding: 18px;
+  border: 1px solid var(--pdfsel-line);
+  border-radius: 12px;
+  background: var(--pdfsel-surface);
+}
+
+.settings-card label {
+  font-weight: 650;
+}
+
+.settings-card input[type="password"] {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 44px;
+  margin: 14px 0 10px;
+  padding: 8px 12px;
+  border: 1px solid light-dark(#788b81, #789588);
+  border-radius: 8px;
+  background: var(--pdfsel-background);
+  color: var(--pdfsel-ink);
+}
+
+.settings-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.settings-card .settings-status {
+  margin-top: 8px;
+}
+
+.settings-status:empty {
+  display: none;
+}
+
+.settings-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+.settings-check input {
+  width: 19px;
+  height: 19px;
+  accent-color: var(--pdfsel-accent);
+}
+
+.settings-footer a {
+  display: inline-block;
+  padding: 8px 0;
+  color: var(--pdfsel-accent);
+}
+
+.settings-page kbd {
+  font-family: inherit;
+  font-size: 0.94em;
+}
